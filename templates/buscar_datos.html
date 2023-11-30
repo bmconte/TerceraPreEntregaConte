@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Datos</title>
+</head>
+<body>
+    <h2>Búsqueda de Productos</h2>
+    <form method="post" action="{% url 'buscar_datos' %}">
+        {% csrf_token %}
+        <label for="search_term">Buscar:</label>
+        <input type="text" name="search_term" id="search_term" required>
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>

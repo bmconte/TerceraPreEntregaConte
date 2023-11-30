@@ -21,8 +21,20 @@ def insertar_datos(request):
 
 def buscar_datos(request):
     if request.method == 'POST':
-        # Lógica para buscar datos en la base de datos
-        pass
+        # Obtener el término de búsqueda desde el formulario
+        search_term = request.POST.get('search_term', '')
+
+        # Realizar la búsqueda en la base de datos
+        resultados = Producto.objects.filter(nombre__icontains=search_term)
+
+        # Renderizar la página de resultados
+        return render(request, 'resultados_busqueda.html', {'resultados': resultados, 'search_term': search_term})
     else:
         # Renderizar la página de búsqueda
-        pass
+        return render(request, 'buscar_datos.html')
+
+def show_html(request):
+    contexto = {}
+    return render(request, 'index.html', contexto)
+
+

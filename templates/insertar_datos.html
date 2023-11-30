@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insertar Datos</title>
+</head>
+<body>
+
+<h2>Insertar Datos</h2>
+
+<form method="post" action="{% url 'insertar_datos' %}">
+    {% csrf_token %}
+
+    <h3>Cliente:</h3>
+    <label for="{{ cliente_form.nombre.id_for_label }}">Nombre del Cliente:</label>
+    {{ cliente_form.nombre }}
+    <br>
+    <label for="{{ cliente_form.email.id_for_label }}">Email del Cliente:</label>
+    {{ cliente_form.email }}
+    <br><br>
+
+    <h3>Categoría:</h3>
+    <label for="{{ categoria_form.nombre.id_for_label }}">Nombre de la Categoría:</label>
+    {{ categoria_form.nombre }}
+    <br><br>
+
+    <h3>Producto:</h3>
+<label for="{{ producto_form.nombre.id_for_label }}">Nombre del Producto:</label>
+{{ producto_form.nombre }}
+<br>
+<label for="{{ producto_form.precio.id_for_label }}">Precio del Producto:</label>
+<input type="number" step="0.01" name="{{ producto_form.precio.name }}" value="{{ producto_form.precio.value|default:'' }}" required>
+<!-- Agregamos type="number" y step="0.01" para permitir números con decimales -->
+<br><br>
+
+
+    <input type="submit" value="Guardar">
+</form>
+
+</body>
+</html>
